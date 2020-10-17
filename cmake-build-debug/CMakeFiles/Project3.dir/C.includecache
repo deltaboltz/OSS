@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/classes/OS/connor/connor.3/oss.c
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+errno.h
+-
+string.h
+-
+sys/types.h
+-
+sys/ipc.h
+-
+sys/msg.h
+-
+

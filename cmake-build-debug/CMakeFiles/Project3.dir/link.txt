@@ -1,1 +1,1 @@
-/usr/bin/cc  -g    CMakeFiles/Project3.dir/oss.c.o CMakeFiles/Project3.dir/oosrcv.c.o  -o Project3 -rdynamic 
+/usr/bin/cc  -g    CMakeFiles/Project3.dir/src/oss.c.o CMakeFiles/Project3.dir/src/ossrcv.c.o  -o Project3 -rdynamic 

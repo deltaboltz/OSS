@@ -4,8 +4,8 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_C
-  "/classes/OS/connor/connor.3/oosrcv.c" "/classes/OS/connor/connor.3/cmake-build-debug/CMakeFiles/Project3.dir/oosrcv.c.o"
-  "/classes/OS/connor/connor.3/oss.c" "/classes/OS/connor/connor.3/cmake-build-debug/CMakeFiles/Project3.dir/oss.c.o"
+  "/classes/OS/connor/connor.3/src/oss.c" "/classes/OS/connor/connor.3/cmake-build-debug/CMakeFiles/Project3.dir/src/oss.c.o"
+  "/classes/OS/connor/connor.3/src/ossrcv.c" "/classes/OS/connor/connor.3/cmake-build-debug/CMakeFiles/Project3.dir/src/ossrcv.c.o"
   )
 SET(CMAKE_C_COMPILER_ID "GNU")
 

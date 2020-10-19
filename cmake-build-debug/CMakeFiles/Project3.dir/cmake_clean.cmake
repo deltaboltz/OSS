@@ -1,6 +1,6 @@
 FILE(REMOVE_RECURSE
-  "CMakeFiles/Project3.dir/oss.c.o"
-  "CMakeFiles/Project3.dir/oosrcv.c.o"
+  "CMakeFiles/Project3.dir/src/oss.c.o"
+  "CMakeFiles/Project3.dir/src/ossrcv.c.o"
   "Project3.pdb"
   "Project3"
 )

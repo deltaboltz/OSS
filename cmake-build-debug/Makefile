@@ -101,82 +101,14 @@ depend:
 	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named Project3
-
-# Build rule for target.
-Project3: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Project3
-.PHONY : Project3
-
-# fast build rule for target.
-Project3/fast:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/build
-.PHONY : Project3/fast
-
-oosrcv.o: oosrcv.c.o
-.PHONY : oosrcv.o
-
-# target to build an object file
-oosrcv.c.o:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/oosrcv.c.o
-.PHONY : oosrcv.c.o
-
-oosrcv.i: oosrcv.c.i
-.PHONY : oosrcv.i
-
-# target to preprocess a source file
-oosrcv.c.i:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/oosrcv.c.i
-.PHONY : oosrcv.c.i
-
-oosrcv.s: oosrcv.c.s
-.PHONY : oosrcv.s
-
-# target to generate assembly for a file
-oosrcv.c.s:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/oosrcv.c.s
-.PHONY : oosrcv.c.s
-
-oss.o: oss.c.o
-.PHONY : oss.o
-
-# target to build an object file
-oss.c.o:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/oss.c.o
-.PHONY : oss.c.o
-
-oss.i: oss.c.i
-.PHONY : oss.i
-
-# target to preprocess a source file
-oss.c.i:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/oss.c.i
-.PHONY : oss.c.i
-
-oss.s: oss.c.s
-.PHONY : oss.s
-
-# target to generate assembly for a file
-oss.c.s:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/oss.c.s
-.PHONY : oss.c.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... Project3"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... oosrcv.o"
-	@echo "... oosrcv.i"
-	@echo "... oosrcv.s"
-	@echo "... oss.o"
-	@echo "... oss.i"
-	@echo "... oss.s"
 .PHONY : help
 
 

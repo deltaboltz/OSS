@@ -1,7 +1,7 @@
 CC      = gcc
 CFLAGS  = -Wall -g
-TARGET1 = oss
-TARGET2 = ossrcv
+TARGET1 = ./src/oss
+TARGET2 = ./src/ossrcv
 OBJS1   = oss.o
 OBJS2   = ossrcv.o
 

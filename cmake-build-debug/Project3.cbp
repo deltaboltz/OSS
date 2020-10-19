@@ -64,9 +64,9 @@
          </MakeCommands>
       </Target>
       </Build>
-      <Unit filename="/classes/OS/connor/connor.3/oosrcv.c">
+      <Unit filename="/classes/OS/connor/connor.3/src/oss.c">
       </Unit>
-      <Unit filename="/classes/OS/connor/connor.3/oss.c">
+      <Unit filename="/classes/OS/connor/connor.3/src/ossrcv.c">
       </Unit>
       <Unit filename="/classes/OS/connor/connor.3/CMakeLists.txt">
           <Option virtualFolder="CMake Files\" />

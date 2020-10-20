@@ -53,7 +53,7 @@ int main(int argc, char **argv)
     {
         if(msgrcv(msqid, &msg, sizeof(msg.mtext), 0, 0) == -1)
         {
-            perror("msgrcv");
+            perror(":msgrcv");
             exit(1);
         }
         printf("recvd: \"%s\" \n", msg.mtext);

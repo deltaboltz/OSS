@@ -6,8 +6,10 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <getopt.h>
+#include <sys/shm.h>
 #include <sys/types.h>
 #include <sys/msg.h>
+#include <sys/wait.h>
 #include <string.h>
 #include <errno.h>
 #include <sys/ipc.h>
@@ -30,41 +32,46 @@ typedef struct
 }shmmem;
 shmmem* ptr;
 
-int main(int argc, char **argv)
-{
-    int msqid = 0;
-    int toend;
-    key_t key;
+int shmid;
+double timeout;
 
+float nextrand(int maxNano);
+
+int main(void)
+{
+    srand(getpid());
+    timeout = rand() * 1e6;
+
+    key_t key;
     if((key = ftok(".", 'B')) == -1)
     {
         perror("ftok");
         exit(1);
     }
-
-    if((msqid = msgget(key, PERMS)) == -1)
+    shmid = shmget(key, 1048, 0600|IPC_CREAT|IPC_EXCL);
+    if(shmid == -1)
     {
-        perror("msgget");
-        exit(1);
-    }
-    printf("message q: ready to recieve\n");
-
-    for(;;)
-    {
-        if(msgrcv(msqid, &msg, sizeof(msg.mtext), 0, 0) == -1)
-        {
-            perror(":msgrcv");
-            exit(1);
-        }
-        printf("recvd: \"%s\" \n", msg.mtext);
-        toend = strcmp(msg.mtext, "end");
-        if(toend == 0)
-        {
-            break;
-        }
+        //freeshm();
+        perror("shmid");
+        return 1;
     }
 
-    printf("message q: done rcving\n");
-    //system("rm msgq.txt");
+
     return 0;
+}
+
+float nextrand(int maxNano)
+{
+    int increaseNano = rand() % maxNano;
+    shmmem copy;
+    (&copy)->clockSec = ptr->clockSec;
+    (&copy)->clockNano = ptr->clockNano;
+    ptr->clockNano -= increaseNano;
+
+    while(ptr->clockNano > 1e9)
+    {
+        ptr-> clockNano -= (int)1e9;
+        ptr->clockSec += 1;
+    }
+    return ((float)((int)(&copy)));
 }

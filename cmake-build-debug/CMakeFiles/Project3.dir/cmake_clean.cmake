@@ -1,5 +1,4 @@
 FILE(REMOVE_RECURSE
-  "CMakeFiles/Project3.dir/src/messageexampleoss.c.o"
   "CMakeFiles/Project3.dir/src/ossrcv.c.o"
   "CMakeFiles/Project3.dir/src/oss.c.o"
   "Project3.pdb"

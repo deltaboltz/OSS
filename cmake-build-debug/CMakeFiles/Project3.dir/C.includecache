@@ -6,27 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/classes/OS/connor/connor.3/src/messageexampleoss.c
-stdio.h
--
-stdlib.h
--
-unistd.h
--
-getopt.h
--
-sys/types.h
--
-sys/msg.h
--
-string.h
--
-errno.h
--
-sys/ipc.h
--
-sys/types.h
--
+/classes/OS/connor/connor.3/src/clock_work.h
 
 /classes/OS/connor/connor.3/src/oss.c
 stdio.h
@@ -53,6 +33,8 @@ sys/ipc.h
 -
 sys/types.h
 -
+clock_work.h
+/classes/OS/connor/connor.3/src/clock_work.h
 
 /classes/OS/connor/connor.3/src/ossrcv.c
 stdio.h
@@ -63,9 +45,13 @@ unistd.h
 -
 getopt.h
 -
+sys/shm.h
+-
 sys/types.h
 -
 sys/msg.h
+-
+sys/wait.h
 -
 string.h
 -
@@ -75,4 +61,6 @@ sys/ipc.h
 -
 sys/types.h
 -
+clock_work.h
+/classes/OS/connor/connor.3/src/clock_work.h
 

@@ -101,109 +101,14 @@ depend:
 	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named Project3
-
-# Build rule for target.
-Project3: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Project3
-.PHONY : Project3
-
-# fast build rule for target.
-Project3/fast:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/build
-.PHONY : Project3/fast
-
-src/messageexampleoss.o: src/messageexampleoss.c.o
-.PHONY : src/messageexampleoss.o
-
-# target to build an object file
-src/messageexampleoss.c.o:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/src/messageexampleoss.c.o
-.PHONY : src/messageexampleoss.c.o
-
-src/messageexampleoss.i: src/messageexampleoss.c.i
-.PHONY : src/messageexampleoss.i
-
-# target to preprocess a source file
-src/messageexampleoss.c.i:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/src/messageexampleoss.c.i
-.PHONY : src/messageexampleoss.c.i
-
-src/messageexampleoss.s: src/messageexampleoss.c.s
-.PHONY : src/messageexampleoss.s
-
-# target to generate assembly for a file
-src/messageexampleoss.c.s:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/src/messageexampleoss.c.s
-.PHONY : src/messageexampleoss.c.s
-
-src/oss.o: src/oss.c.o
-.PHONY : src/oss.o
-
-# target to build an object file
-src/oss.c.o:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/src/oss.c.o
-.PHONY : src/oss.c.o
-
-src/oss.i: src/oss.c.i
-.PHONY : src/oss.i
-
-# target to preprocess a source file
-src/oss.c.i:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/src/oss.c.i
-.PHONY : src/oss.c.i
-
-src/oss.s: src/oss.c.s
-.PHONY : src/oss.s
-
-# target to generate assembly for a file
-src/oss.c.s:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/src/oss.c.s
-.PHONY : src/oss.c.s
-
-src/ossrcv.o: src/ossrcv.c.o
-.PHONY : src/ossrcv.o
-
-# target to build an object file
-src/ossrcv.c.o:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/src/ossrcv.c.o
-.PHONY : src/ossrcv.c.o
-
-src/ossrcv.i: src/ossrcv.c.i
-.PHONY : src/ossrcv.i
-
-# target to preprocess a source file
-src/ossrcv.c.i:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/src/ossrcv.c.i
-.PHONY : src/ossrcv.c.i
-
-src/ossrcv.s: src/ossrcv.c.s
-.PHONY : src/ossrcv.s
-
-# target to generate assembly for a file
-src/ossrcv.c.s:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/src/ossrcv.c.s
-.PHONY : src/ossrcv.c.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... Project3"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... src/messageexampleoss.o"
-	@echo "... src/messageexampleoss.i"
-	@echo "... src/messageexampleoss.s"
-	@echo "... src/oss.o"
-	@echo "... src/oss.i"
-	@echo "... src/oss.s"
-	@echo "... src/ossrcv.o"
-	@echo "... src/ossrcv.i"
-	@echo "... src/ossrcv.s"
 .PHONY : help
 
 

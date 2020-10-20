@@ -70,13 +70,11 @@
          </MakeCommands>
       </Target>
       </Build>
-      <Unit filename="/classes/OS/connor/connor.3/src/messageexampleoss.c">
-      </Unit>
       <Unit filename="/classes/OS/connor/connor.3/src/oss.c">
       </Unit>
       <Unit filename="/classes/OS/connor/connor.3/src/ossrcv.c">
       </Unit>
-      <Unit filename="/classes/OS/connor/connor.3/headers/child_handler.h">
+      <Unit filename="/classes/OS/connor/connor.3/src/clock_work.h">
       </Unit>
       <Unit filename="/classes/OS/connor/connor.3/CMakeLists.txt">
           <Option virtualFolder="CMake Files\" />

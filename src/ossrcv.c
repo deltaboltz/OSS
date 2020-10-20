@@ -20,7 +20,6 @@
 struct msgmem
 {
     long mtype;
-    char mtext[200];
 };
 struct msgmem msg;
 
@@ -32,15 +31,17 @@ typedef struct
 }shmmem;
 shmmem* ptr;
 
-int shmid;
+
 double timeout;
 
 float nextrand(int maxNano);
+float tofloat();
+
 
 int main(void)
 {
     srand(getpid());
-    timeout = rand() * 1e6;
+    timeout = rand() % 100000;
 
     key_t key;
     if((key = ftok(".", 'B')) == -1)
@@ -48,7 +49,7 @@ int main(void)
         perror("ftok");
         exit(1);
     }
-    shmid = shmget(key, 1048, 0600|IPC_CREAT|IPC_EXCL);
+    int shmid =  shmget(key, 1048, 0600 | IPC_CREAT | IPC_EXCL);
     if(shmid == -1)
     {
         //freeshm();
@@ -56,22 +57,23 @@ int main(void)
         return 1;
     }
 
+    while((ptr->clockNano < timeout) && (ptr->clockSec < timeout));
+
+    if(msgrcv(2, &msg, 0, 0, 0) == -1)
+    {
+        perror("msgrcv");
+    }
+
+    ptr->pgid = getpid();
+
+    if(shmdt(shmid) == -1)
+    {
+        perror("shmdt");
+    }
+
 
     return 0;
 }
 
-float nextrand(int maxNano)
-{
-    int increaseNano = rand() % maxNano;
-    shmmem copy;
-    (&copy)->clockSec = ptr->clockSec;
-    (&copy)->clockNano = ptr->clockNano;
-    ptr->clockNano -= increaseNano;
 
-    while(ptr->clockNano > 1e9)
-    {
-        ptr-> clockNano -= (int)1e9;
-        ptr->clockSec += 1;
-    }
-    return ((float)((int)(&copy)));
-}
+

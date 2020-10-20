@@ -3,4 +3,4 @@ project(Project3 C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(Project3 src/messageexampleoss.c src/ossrcv.c headers/child_handler.h src/oss.c)
+add_executable(Project3 src/ossrcv.c src/oss.c)

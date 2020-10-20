@@ -20,7 +20,6 @@
 struct msgmem
 {
     long mtype;
-    //char msgtxt;
 };
 struct msgmem msg;
 
@@ -127,7 +126,21 @@ int main(int argc, char **argv)
 
     ptr->clockSec = 0;
     ptr->clockNano = 0;
+
+
+    int msgID = msgget(currentID, 0644|IPC_CREAT|IPC_EXCL);
+
+    int msgqID = currentID -1;
+
     ptr->pgid = 0;
+
+    msg.mtype = 1;
+
+    if(msgsnd(msgqID, &msg, 0, 0) == -1)
+    {
+        perror("msgsnd");
+    }
+
 
     while(max < 100 && ptr->clockSec < 2)
     {
@@ -158,6 +171,7 @@ int main(int argc, char **argv)
             waitpid(-1, &wstatus, 0);
             procCounter--;
             ptr->pgid = 0;
+            msgsnd(msgqID, &msg, 0, 0);
             //send message to append to msgque
         }
 

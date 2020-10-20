@@ -25,6 +25,9 @@
          <Option compiler="gcc" />
          <Compiler>
             <Add directory="/usr/include" />
+            <Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5" />
+            <Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5/backward" />
+            <Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5/x86_64-redhat-linux" />
             <Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include" />
             <Add directory="/usr/local/include" />
          </Compiler>
@@ -43,6 +46,9 @@
          <Option compiler="gcc" />
          <Compiler>
             <Add directory="/usr/include" />
+            <Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5" />
+            <Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5/backward" />
+            <Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5/x86_64-redhat-linux" />
             <Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include" />
             <Add directory="/usr/local/include" />
          </Compiler>
@@ -64,9 +70,13 @@
          </MakeCommands>
       </Target>
       </Build>
+      <Unit filename="/classes/OS/connor/connor.3/src/messageexampleoss.c">
+      </Unit>
       <Unit filename="/classes/OS/connor/connor.3/src/oss.c">
       </Unit>
       <Unit filename="/classes/OS/connor/connor.3/src/ossrcv.c">
+      </Unit>
+      <Unit filename="/classes/OS/connor/connor.3/headers/child_handler.h">
       </Unit>
       <Unit filename="/classes/OS/connor/connor.3/CMakeLists.txt">
           <Option virtualFolder="CMake Files\" />

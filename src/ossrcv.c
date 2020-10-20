@@ -22,7 +22,15 @@ struct msgmem
 };
 struct msgmem msg;
 
-int main(void)
+typedef struct
+{
+    pid_t pgid;
+    int clockSec;
+    int clockNano;
+}shmmem;
+shmmem* ptr;
+
+int main(int argc, char **argv)
 {
     int msqid = 0;
     int toend;

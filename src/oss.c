@@ -128,7 +128,7 @@ int main(int argc, char **argv)
     ptr->clockNano = 0;
 
 
-    int msgID = msgget(currentID, 0644|IPC_CREAT|IPC_EXCL);
+    int msgID = msgget((ftok(".", currentID)), 0644|IPC_CREAT|IPC_EXCL);
 
     int msgqID = currentID -1;
 

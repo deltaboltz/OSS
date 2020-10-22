@@ -1,0 +1,45 @@
+Gitlog
+
+Before this log was a different repo with the original files, these files were the examples from
+	the given site and fully typed out to understand message queues
+
+Oct 18, 2020
+
+93bbb57
+	Delete oss.c
+
+e96aba6
+	Delete ossrcv.c
+
+Oct 20, 2020
+
+(Had troubles pushing to my git)
+34e86c1, c8e63c7, 49b3c64
+	forking, waiting, killing...?
+
+7a1d3d9
+	Merge branch 'master' of https://github.com/deltaboltz/OSS
+
+4615fc9
+	Setting up some time shares
+
+6f22b88, 38442f8
+	Idk what I'm doing again...
+
+Oct 21, 2020
+
+be7d757
+	Fixed some messaging problems
+
+6088312
+	Added ftok in msgget
+
+Oct 22, 2020
+
+378aa44
+	Added: proper msg and memory management. finished
+
+ee91edb
+	Added comments to files
+
+Any commit after this will be this log file and a readme.md

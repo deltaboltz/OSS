@@ -49,24 +49,28 @@ int main(void)
         perror("ftok");
         exit(1);
     }
-    int shmid =  shmget(key, 1048, 0600 | IPC_CREAT | IPC_EXCL);
+    int shmid =  shmget(key, 0, 0);
     if(shmid == -1)
     {
         //freeshm();
         perror("shmid");
         return 1;
     }
+    ptr = shmat(shmid, NULL, 0);
 
     while((ptr->clockNano < timeout) && (ptr->clockSec < timeout));
 
-    if(msgrcv(2, &msg, 0, 0, 0) == -1)
+
+    int msgID;
+    msgID = msgget(key, 0660);
+    if(msgrcv(msgID, &msg, 0, 0, 0) == -1)
     {
         perror("msgrcv");
     }
 
     ptr->pgid = getpid();
 
-    if(shmdt(shmid) == -1)
+    if(shmdt(ptr) == -1)
     {
         perror("shmdt");
     }

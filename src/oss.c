@@ -193,5 +193,7 @@ int main(int argc, char **argv)
         }
     }
 
+    shmctl(shmid, IPC_RMID, NULL);
+
 
 }

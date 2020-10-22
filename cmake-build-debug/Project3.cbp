@@ -74,8 +74,6 @@
       </Unit>
       <Unit filename="/classes/OS/connor/connor.3/src/ossrcv.c">
       </Unit>
-      <Unit filename="/classes/OS/connor/connor.3/src/clock_work.h">
-      </Unit>
       <Unit filename="/classes/OS/connor/connor.3/CMakeLists.txt">
           <Option virtualFolder="CMake Files\" />
       </Unit>

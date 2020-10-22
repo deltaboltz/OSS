@@ -1,6 +1,18 @@
-//
-// Created by Connor on 10/18/2020.
-//
+/*
+ * Connor Schultz
+ * cdstyd@umsystem.edu
+ *
+ * 10/28/2020
+ *
+ * Files needed: oss.c
+ *               ossrcv.c
+ *
+ * Files created: logfile (name given by user)
+ *
+ * Sources: https://www.tutorialspoint.com/inter_process_communication/inter_process_communication_message_queues.htm
+ *          https://www.geeksforgeeks.org/ipc-using-message-queues/
+ *
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -35,6 +47,7 @@ void signalhandler(int sig) {
     }
 }
 
+//Memory clean up incase we end early
 void memorycleanup(struct shmmem* ptr, int shmid, int msgqID) {
     if (shmdt(ptr) == -1) {
         perror("shm detach");
@@ -54,6 +67,7 @@ void memorycleanup(struct shmmem* ptr, int shmid, int msgqID) {
     }
 }
 
+//Memory clean up in case we end early AND do not have the ptr value set
 void memorycleanupnoptr(int shmid, int msgqID) {
     if (shmid != -1) {
         if (shmctl(shmid, IPC_RMID, NULL) == -1) {
@@ -69,24 +83,38 @@ void memorycleanupnoptr(int shmid, int msgqID) {
     }
 }
 
+//C does not allow for overloaded functions so had to do two different memory dumps
+
 int main(int argc, char **argv)
 {
+    //initialize all variables
     int options;
     FILE *fp;
     int MAX_CHILDREN = 5;
     int MAX_TIME = 20;
     char filename[80];
+
+    //Child array that holds all children IDs
     int children[100];
     int childind;
+    //---------------------------------------
 
+    //Early end or alarm handler
     signal(SIGINT, signalhandler);
     signal(SIGALRM, signalhandler);
 
+
+    //Initialize the entire child ID array
+    //C does not initialize arrays for you so it would have garbage data otherwise
     for (childind = 0; childind < 100; childind++) {
         children[childind] = 0;
     }
+    //-----------------------------------------------------------------------------
+
+    //Reset the child index to zero
     childind = 0;
 
+    //Set opterr to 0 to keep the getopt from spitting out its own errors
     opterr = 0;
     while((options = getopt(argc, argv,":hc:l:t:")) != -1)
     {
@@ -145,6 +173,7 @@ int main(int argc, char **argv)
 
     alarm(MAX_TIME);
 
+    //Create the shared memory key, shmid, and shmmem ptr
     key_t key;
     int shmid;
     struct shmmem* ptr;
@@ -153,6 +182,7 @@ int main(int argc, char **argv)
         perror("ftok");
         exit(1);
     }
+    //We create the key in this file for the child to use
     if ((shmid = shmget(key, 1048, 0600|IPC_CREAT|IPC_EXCL)) == -1) {
         perror("shmget");
         exit(1);
@@ -163,6 +193,7 @@ int main(int argc, char **argv)
         exit(1);
     }
 
+    //Create the message queue
     int msgqkey;
     int msgqID;
     if ((msgqkey = ftok(".", 'C')) == -1) {
@@ -176,10 +207,13 @@ int main(int argc, char **argv)
         exit(1);
     }
 
+    //Start of child processes
     int max = 0;
     int procCounter = 0;
     int wstatus;
     struct msgmem msg;
+
+    //mtype does not matter in this project
     msg.mtype = 1;
     ptr->clockSec = 0;
     ptr->clockNano = 0;
@@ -193,13 +227,16 @@ int main(int argc, char **argv)
         exit(1);
     }
 
+    //While loop to make 100 children or until sim clock gets to 2 seconds
     while(max < 100 && ptr->clockSec < 2)
     {
+        //If the user ^C the program must quit the loop
         if (sigquit) break;
 
         if(procCounter < MAX_CHILDREN)
         {
             const pid_t myppid = fork();
+            //Switch case for if the child doesn't fork or if it does then execlp
             switch(myppid)
             {
                 case -1:
@@ -215,15 +252,18 @@ int main(int argc, char **argv)
                         exit(1);
                     }
                     break;
+                    //Increment the procCounter and set the next children array element to the myppid
                 default:
                     procCounter++;
                     children[childind++] = myppid;
                     break;
             }
+            //Print to the log file
             fprintf(fp, "Creating child with id: %d. At %d Seconds and %d Nanoseconds.\n", myppid, ptr->clockSec, ptr->clockNano);
             max++;
         }
-        
+
+        //Once the child is done then we print to the log file again
         if(ptr->pgid != 0)
         {
             fprintf(fp, "Terminating child with id: %d. At %d Seconds and %d Nanoseconds.\n", ptr->pgid, ptr->clockSec, ptr->clockNano);
@@ -239,6 +279,7 @@ int main(int argc, char **argv)
             }
         }
 
+        //Increment the sim clock, had to do +1000 nanoSec in order to sometimes reach the 2 second mark
         ptr->clockNano += 1000;
         while(ptr->clockNano > 1e9)
         {
@@ -249,10 +290,12 @@ int main(int argc, char **argv)
 
     fprintf(fp, "Terminating after starting %d children, at %d Seconds and %d Nanoseconds.\n", childind, ptr->clockSec, ptr->clockNano); 
 
+    //Start killing the remaining children
     while(procCounter > 0)
     {
         int i;
         for (i = 0; i < childind; i++) {
+            //This is where the children array come into play
             if (kill(children[i], SIGINT) == -1 && errno != ESRCH) {
                 perror("kill");
                 memorycleanup(ptr, shmid, msgqID);
@@ -263,6 +306,7 @@ int main(int argc, char **argv)
         procCounter--;
     }
 
+    //clean up all the memory that is left over
     if (shmdt(ptr) == -1) {
         perror("shm detach");
         exit(1);
